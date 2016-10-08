@@ -3,6 +3,8 @@ TARGET = OpenBoardImporter
 
 CONFIG += debug_and_release
 
+QT += core \
+      widgets
 
 HEADERS += \
     UBUpgradeToOef.h \

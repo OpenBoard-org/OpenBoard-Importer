@@ -61,17 +61,17 @@ QString UBDirectories::subPathFor(PossiblesImport id)
 QString UBDirectories::basicPath(PossiblesImport id)
 {
     if(id == Audios)
-        return QDesktopServices::storageLocation(QDesktopServices::MusicLocation);
+        return QStandardPaths::writableLocation(QStandardPaths::MusicLocation);
     if(id == Movies)
-        return QDesktopServices::storageLocation(QDesktopServices::MoviesLocation);
+        return QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
     if(id == Pictures)
-        return QDesktopServices::storageLocation(QDesktopServices::PicturesLocation);
+        return QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
 
     QString path;
 #ifdef Q_OS_WIN
-    path = QDesktopServices::storageLocation(QDesktopServices::DataLocation).replace("\\" + qApp->organizationName() + "\\"+ qApp->applicationName(),"");
+    path = QStandardPaths::writableLocation(QStandardPaths::DataLocation).replace("\\" + qApp->organizationName() + "\\"+ qApp->applicationName(),"");
 #else
-    path = QDesktopServices::storageLocation(QDesktopServices::DataLocation).replace("/" + qApp->organizationName() + "/"+ qApp->applicationName(),"");
+    path = QStandardPaths::writableLocation(QStandardPaths::DataLocation).replace("/" + qApp->organizationName() + "/"+ qApp->applicationName(),"");
 #endif
     return path;
 }
@@ -79,13 +79,13 @@ QString UBDirectories::basicPath(PossiblesImport id)
 
 QString UBDirectories::homePath()
 {
-    return QDesktopServices::storageLocation(QDesktopServices::HomeLocation);
+    return QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
 }
 
 
 bool UBDirectories::removeDir(const QString & dirName)
 {
-    bool result;
+    bool result = false;
     QDir dir(dirName);
 
     if (dir.exists(dirName)) {

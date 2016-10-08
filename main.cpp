@@ -22,7 +22,7 @@
 
 
 
-#include <QtGui>
+#include <QtWidgets>
 #include "UBUpgradeToOef.h"
 #include "UBUpgradeToOefDelegate.h"
 
